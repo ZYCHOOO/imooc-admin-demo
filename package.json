@@ -33,8 +33,18 @@
     "eslint-plugin-standard": "^4.0.0",
     "eslint-plugin-vue": "^7.0.0",
     "husky": "^7.0.1",
+    "lint-staged": "^13.0.3",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2"
+  },
+  "gitHooks": {
+    "pre-commit": "line-staged"
+  },
+  "lint-staged": {
+    "src/**/*.{js,vue}": [
+      "eslint --fix",
+      "git add"
+    ]
   },
   "config": {
     "commitizen": {
