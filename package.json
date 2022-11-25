@@ -9,7 +9,10 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@element-plus/icons": "^0.0.11",
+    "@element-plus/icons-vue": "^2.0.10",
     "core-js": "^3.6.5",
+    "element-plus": "^2.2.22",
     "vue": "^3.2.8",
     "vue-router": "^4.0.11",
     "vuex": "^4.0.2"
@@ -35,7 +38,8 @@
     "husky": "^7.0.1",
     "lint-staged": "^13.0.3",
     "sass": "^1.26.5",
-    "sass-loader": "^8.0.2"
+    "sass-loader": "^8.0.2",
+    "svg-sprite-loader": "^6.0.9"
   },
   "gitHooks": {
     "pre-commit": "line-staged"
