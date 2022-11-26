@@ -4,11 +4,18 @@ function resolve (dir) {
 }
 
 module.exports = {
+  // webpack devServer 提供了代理的能力，该代理可以把所有请求到当前服务器中的请求，转发代理到另一个服务器上
+  devServer: {
+    proxy: {
+      // 当地址中含有 /api 的时候，触发此代理
+      '/api': {
+        target: 'https://api.imooc-admin.lgdsunday.club/',
+        changeOrigin: true
+      }
+    }
+  },
   chainWebpack (config) {
-    config.module
-      .rule('svg')
-      .exclude.add(resolve('src/icons'))
-      .end()
+    config.module.rule('svg').exclude.add(resolve('src/icons')).end()
     config.module
       .rule('icons')
       .test(/\.svg$/)

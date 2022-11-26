@@ -1,11 +1,16 @@
 <template>
   <div class="login-container">
-    <el-form :model="loginForm" :rules="loginRules" class="login-form">
+    <el-form
+      :model="loginForm"
+      :rules="loginRules"
+      ref="loginFormRef"
+      class="login-form"
+    >
       <div class="title-container">
         <h3 class="title">用户登录</h3>
       </div>
       <!-- username -->
-      <el-form-item props="username">
+      <el-form-item prop="username">
         <span class="svg-container">
           <!-- <svg-icon icon="https://res.lgdsunday.club/user.svg" /> -->
           <svg-icon icon="user" />
@@ -40,7 +45,12 @@
       </el-form-item>
 
       <!-- 登录按钮 -->
-      <el-button type="primary" style="width: 100%; margin-bottom: 30px">
+      <el-button
+        type="primary"
+        :loading="loginLoading"
+        style="width: 100%; margin-bottom: 30px"
+        @click="handleLogin"
+      >
         登录
       </el-button>
     </el-form>
@@ -49,6 +59,7 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useStore } from 'vuex'
 import { validatePassword } from './rules'
 
 // 数据源
@@ -60,7 +71,7 @@ const loginForm = ref({
 // 验证规则
 const loginRules = ref({
   username: [{ required: true, trigger: 'blur', message: '用户名为必填项' }],
-  password: [{ required: true, trigger: 'blur', validator: validatePassword }]
+  password: [{ required: true, trigger: 'blur', validator: validatePassword() }]
 })
 
 // 密码框文本显示
@@ -71,6 +82,30 @@ const togglePwdType = () => {
   } else {
     passwordType.value = 'password'
   }
+}
+
+// 处理登录
+const loginLoading = ref(false)
+const loginFormRef = ref(null)
+const store = useStore()
+const handleLogin = () => {
+  loginFormRef.value.validate((valid) => {
+    console.log('111')
+    if (!valid) return
+    loginLoading.value = true
+    store
+      .dispatch('user/login', loginForm.value)
+      .then((res) => {
+        loginLoading.value = false
+        console.log('111')
+      })
+      .catch((error) => {})
+    if (valid) {
+      console.log('valid')
+    } else {
+      console.log('cuxk')
+    }
+  })
 }
 </script>
 
