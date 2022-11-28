@@ -1,13 +1,15 @@
 <template>
-  <div class="app-wrapper">
+  <div
+    class="app-wrapper"
+    :class="[$store.getters.sidebarOpened ? 'open-sidebar' : 'hide-sidebar']"
+  >
     <!-- 左侧menu -->
     <side-bar
-      id="guide-sidebar"
       class="sidebar-container"
       :style="{ background: variables.menuBg }"
     />
     <div class="main-container">
-      <div class="fix-header">
+      <div class="fixed-header">
         <!-- 顶部navbar -->
         <nav-bar></nav-bar>
       </div>
@@ -32,11 +34,15 @@ import {} from 'vue'
   @include clearfix;
   @include relative;
 }
-.fix-header {
+.fixed-header {
   position: fixed;
   top: 0;
   right: 0;
   width: calc(100% - #{$sideBarWidth});
   z-index: 9;
+  transition: width 0.28s;
+}
+.hide-sidebar .fixed-header {
+  width: calc(100% - #{$hideSideBarWidth});
 }
 </style>
