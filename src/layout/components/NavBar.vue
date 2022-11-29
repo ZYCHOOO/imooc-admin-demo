@@ -1,6 +1,7 @@
 <template>
   <div class="navbar">
     <hamburger class="hamburger" />
+    <bread-crumb class="breadcrumb-container" />
     <div class="right-menu">
       <!-- 头像 -->
       <el-dropdown class="avatar-container" trigger="click">
@@ -8,8 +9,13 @@
           <el-avatar
             shape="square"
             :size="40"
-            :src="$store.getters.userInfo.avatar"
+            src="https://m.imooc.com/static/wap/static/common/img/logo-small@2x.png"
           />
+          <!-- <el-avatar
+            shape="square"
+            :size="40"
+            :src="$store.getters.userInfo.avatar"
+          /> -->
           <i class="el-icon-s-tools"></i>
         </div>
         <template #dropdown>
@@ -33,6 +39,7 @@
 <script setup>
 import { useStore } from 'vuex'
 import Hamburger from '@/components/Hamburger/index'
+import BreadCrumb from '@/components/BreadCrumb/index'
 
 const store = useStore()
 
@@ -58,6 +65,10 @@ const logout = () => {
     &:hover {
       background: rgba(0, 0, 0, 0.1);
     }
+  }
+
+  .breadcrumb-container {
+    float: left;
   }
 
   .right-menu {

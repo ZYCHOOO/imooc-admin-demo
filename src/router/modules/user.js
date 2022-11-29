@@ -12,7 +12,7 @@ const routes = [
         path: '/user/manage',
         name: 'UserManage',
         component: () => import('@/views/userManage/userManage'),
-        meta: { title: 'profile', icon: 'el-icon-user' }
+        meta: { title: 'userManage', icon: 'user' }
       },
       // 角色列表
       {

@@ -10,6 +10,7 @@ $subMenuHover: #001528;
 
 $sideBarWidth: 210px;
 $hideSideBarWidth: 54px;
+$sidebarDuration: 0.28s;
 
 // js 与 scss 共享变量，通过 :export 导出，在 js 中可通过 esm 进行导入
 :export {

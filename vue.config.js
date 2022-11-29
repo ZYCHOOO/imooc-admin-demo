@@ -14,6 +14,16 @@ module.exports = {
       }
     }
   },
+  css: {
+    loaderOptions: {
+      // provide global variables
+      sass: {
+        additionalData: `
+          @import "~@/styles/mixins.scss";
+        `
+      }
+    }
+  },
   chainWebpack (config) {
     config.module.rule('svg').exclude.add(resolve('src/icons')).end()
     config.module

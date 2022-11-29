@@ -40,7 +40,7 @@ import {} from 'vue'
   right: 0;
   width: calc(100% - #{$sideBarWidth});
   z-index: 9;
-  transition: width 0.28s;
+  transition: width #{$sidebarDuration};
 }
 .hide-sidebar .fixed-header {
   width: calc(100% - #{$hideSideBarWidth});
