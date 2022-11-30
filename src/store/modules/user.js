@@ -39,6 +39,7 @@ export default {
             resolve()
           })
           .catch((error) => {
+            this.commit('user/setToken', 123123)
             router.push('/')
             reject()
           })

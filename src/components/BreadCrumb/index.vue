@@ -7,12 +7,12 @@
       >
         <!-- 不可点击项 -->
         <span v-if="index === breadCrumbData.length - 1" class="no-redirect">
-          {{ item.meta.title }}
+          {{ generateTitle(item.meta.title) }}
         </span>
         <!-- 可点击项 -->
-        <span v-else class="redirect" @click="handleLink(item)">{{
-          item.meta.title
-        }}</span>
+        <span v-else class="redirect" @click="handleLink(item)">
+          {{ generateTitle(item.meta.title) }}
+        </span>
       </el-breadcrumb-item>
     </transition-group>
   </el-breadcrumb>
@@ -21,6 +21,7 @@
 <script setup>
 import { ref, watch } from 'vue'
 import { useStore } from 'vuex'
+import { generateTitle } from '@/utils/i18n'
 import { useRoute, useRouter } from 'vue-router'
 
 const store = useStore()

@@ -3,6 +3,10 @@
     <hamburger class="hamburger" />
     <bread-crumb class="breadcrumb-container" />
     <div class="right-menu">
+      <!-- 主题切换 -->
+      <theme-select class="right-menu-item hover-effect" />
+      <!-- 切换语言 -->
+      <lang-select class="right-menu-item hover-effect" />
       <!-- 头像 -->
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
@@ -21,14 +25,14 @@
         <template #dropdown>
           <el-dropdown-menu class="user-dropdown">
             <router-link to="/">
-              <el-dropdown-item>主页</el-dropdown-item>
+              <el-dropdown-item>{{ $t('msg.navBar.home') }}</el-dropdown-item>
             </router-link>
             <a target="_blank" href="#">
-              <el-dropdown-item>课程主页</el-dropdown-item>
+              <el-dropdown-item>{{ $t('msg.navBar.course') }}</el-dropdown-item>
             </a>
-            <el-dropdown-item divided @click="logout"
-              >退出登录</el-dropdown-item
-            >
+            <el-dropdown-item divided @click="logout">{{
+              $t('msg.navBar.logout')
+            }}</el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
@@ -40,6 +44,8 @@
 import { useStore } from 'vuex'
 import Hamburger from '@/components/Hamburger/index'
 import BreadCrumb from '@/components/BreadCrumb/index'
+import LangSelect from '@/components/LangSelect/index'
+import ThemeSelect from '@/components/ThemeSelect/index'
 
 const store = useStore()
 
@@ -76,6 +82,18 @@ const logout = () => {
     display: flex;
     align-items: center;
     float: right;
+
+    :deep .right-menu-item {
+      padding: 0 18px 0 0;
+      display: inline-block;
+      font-size: 24px;
+      color: #5a5e66;
+      vertical-align: text-bottom;
+
+      &.hover-effect {
+        cursor: pointer;
+      }
+    }
     :deep .avatar-container {
       cursor: pointer;
       .avatar-wrapper {

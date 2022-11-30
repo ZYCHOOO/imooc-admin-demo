@@ -7,7 +7,8 @@
       class="login-form"
     >
       <div class="title-container">
-        <h3 class="title">用户登录</h3>
+        <h3 class="title">{{ $t('msg.login.title') }}</h3>
+        <lang-select class="lang-select" />
       </div>
       <!-- username -->
       <el-form-item prop="username">
@@ -51,8 +52,10 @@
         style="width: 100%; margin-bottom: 30px"
         @click="handleLogin"
       >
-        登录
+        {{ $t('msg.login.loginBtn') }}
       </el-button>
+
+      <div v-html="$t('msg.login.desc')" class="tips" />
     </el-form>
   </div>
 </template>
@@ -61,6 +64,8 @@
 import { ref } from 'vue'
 import { useStore } from 'vuex'
 import { validatePassword } from './rules'
+import { useI18n } from 'vue-i18n'
+import LangSelect from '@/components/LangSelect/index'
 
 // 数据源
 const loginForm = ref({
@@ -69,8 +74,15 @@ const loginForm = ref({
 })
 
 // 验证规则
+const i18n = useI18n()
 const loginRules = ref({
-  username: [{ required: true, trigger: 'blur', message: '用户名为必填项' }],
+  username: [
+    {
+      required: true,
+      trigger: 'blur',
+      message: i18n.t('msg.login.usernameRule')
+    }
+  ],
   password: [{ required: true, trigger: 'blur', validator: validatePassword() }]
 })
 
@@ -100,11 +112,6 @@ const handleLogin = () => {
         console.log('111')
       })
       .catch((error) => {})
-    if (valid) {
-      console.log('valid')
-    } else {
-      console.log('cuxk')
-    }
   })
 }
 </script>
@@ -141,7 +148,8 @@ $cursor: #fff;
       width: 85%;
 
       &__wrapper {
-        margin-top: 6px;
+        width: 100%;
+        height: 100%;
         background: transparent;
         box-shadow: none;
       }
@@ -154,6 +162,12 @@ $cursor: #fff;
         caret-color: $cursor;
         color: $light-gray;
       }
+    }
+
+    .tips {
+      line-height: 24px;
+      font-size: 16px;
+      color: #fff;
     }
   }
 
@@ -173,6 +187,17 @@ $cursor: #fff;
       text-align: center;
       font-weight: bold;
       color: $light-gray;
+    }
+
+    .lang-select {
+      position: absolute;
+      top: 4px;
+      right: 0;
+      background: #fff;
+      font-size: 22px;
+      padding: 4px;
+      border-radius: 4px;
+      cursor: pointer;
     }
   }
 

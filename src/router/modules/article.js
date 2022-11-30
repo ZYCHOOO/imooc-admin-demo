@@ -29,7 +29,7 @@ const routes = [
         path: '/article/edit/:id',
         name: 'ArticleEdit',
         component: () => import('@/views/articleManage/articleCreate'),
-        meta: { title: 'articleCreate' }
+        meta: { title: 'articleEdit' }
       }
     ]
   }
