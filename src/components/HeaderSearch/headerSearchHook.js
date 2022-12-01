@@ -1,6 +1,8 @@
+import { ref } from 'vue'
 import Fuse from 'fuse.js'
 
 export const headerSearchHook = () => {
+  const searchOptions = ref([])
   let fuse
 
   const initFuse = (searchPool) => {
@@ -21,5 +23,9 @@ export const headerSearchHook = () => {
     })
   }
 
-  return { fuse, initFuse }
+  const querySearch = (query) => {
+    searchOptions.value = query ? fuse.search(query) : []
+  }
+
+  return { searchOptions, initFuse, querySearch }
 }
