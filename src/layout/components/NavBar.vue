@@ -3,6 +3,8 @@
     <hamburger class="hamburger" />
     <bread-crumb class="breadcrumb-container" />
     <div class="right-menu">
+      <!-- 全屏切换 -->
+      <screen-full class="right-menu-item hover-effect" />
       <!-- 主题切换 -->
       <theme-select class="right-menu-item hover-effect" />
       <!-- 切换语言 -->
@@ -46,6 +48,7 @@ import Hamburger from '@/components/Hamburger/index'
 import BreadCrumb from '@/components/BreadCrumb/index'
 import LangSelect from '@/components/LangSelect/index'
 import ThemeSelect from '@/components/ThemeSelect/index'
+import ScreenFull from '@/components/ScreenFull/index'
 
 const store = useStore()
 
