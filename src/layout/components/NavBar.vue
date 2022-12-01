@@ -3,6 +3,8 @@
     <hamburger class="hamburger" />
     <bread-crumb class="breadcrumb-container" />
     <div class="right-menu">
+      <!-- 搜索 -->
+      <header-search class="right-menu-item hover-effect" />
       <!-- 全屏切换 -->
       <screen-full class="right-menu-item hover-effect" />
       <!-- 主题切换 -->
@@ -49,6 +51,7 @@ import BreadCrumb from '@/components/BreadCrumb/index'
 import LangSelect from '@/components/LangSelect/index'
 import ThemeSelect from '@/components/ThemeSelect/index'
 import ScreenFull from '@/components/ScreenFull/index'
+import HeaderSearch from '@/components/HeaderSearch/index'
 
 const store = useStore()
 

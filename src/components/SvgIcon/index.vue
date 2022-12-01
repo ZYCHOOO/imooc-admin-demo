@@ -5,6 +5,7 @@
     :style="externalIconStyle"
     class="svg-external-icon svg-icon"
     :class="className"
+    @click="handleClick"
   />
   <!-- 展示内部图标 -->
   <svg
@@ -12,13 +13,14 @@
     class="svg-icon"
     :class="className"
     aria-hidden="true"
+    @click="handleClick"
   >
     <use :xlink:href="iconName" />
   </svg>
 </template>
 
 <script setup>
-import { computed, defineProps } from 'vue'
+import { computed, defineProps, defineEmits } from 'vue'
 import { isExternal as external } from '@/utils/validate'
 const props = defineProps({
   // icon图标
@@ -26,6 +28,8 @@ const props = defineProps({
   // 图标类名
   className: { type: String, default: '' }
 })
+
+const emit = defineEmits(['handle-click'])
 
 /**
  * 判断当前图标是否为外部图标
@@ -42,19 +46,23 @@ const externalIconStyle = computed(() => ({
  * 内部图标
  */
 const iconName = computed(() => `#icon-${props.icon}`)
+
+const handleClick = () => {
+  emit('handle-click')
+}
 </script>
 
 <style lang="scss" scoped>
-  .svg-icon {
-    width: 1em;
-    height: 1em;
-    vertical-align: -.15em;
-    fill: currentColor;
-    overflow: hidden;
-  }
-  .svg-external-icon {
-    display: inline-block;
-    background-color: currentColor;
-    mask-size: cover !important;
-  }
+.svg-icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+.svg-external-icon {
+  display: inline-block;
+  background-color: currentColor;
+  mask-size: cover !important;
+}
 </style>
