@@ -2,14 +2,16 @@
   <!-- 展示外部图标 -->
   <div
     v-if="isExternal"
+    :id="id"
     :style="externalIconStyle"
-    class="svg-external-icon svg-icon"
+    class="svg-icon svg-icon--external"
     :class="className"
     @click="handleClick"
   />
   <!-- 展示内部图标 -->
   <svg
     v-else
+    :id="id"
     class="svg-icon"
     :class="className"
     aria-hidden="true"
@@ -23,6 +25,7 @@
 import { computed, defineProps, defineEmits } from 'vue'
 import { isExternal as external } from '@/utils/validate'
 const props = defineProps({
+  id: { type: String },
   // icon图标
   icon: { type: String, required: true },
   // 图标类名
@@ -59,10 +62,10 @@ const handleClick = () => {
   vertical-align: -0.15em;
   fill: currentColor;
   overflow: hidden;
-}
-.svg-external-icon {
-  display: inline-block;
-  background-color: currentColor;
-  mask-size: cover !important;
+  &--external {
+    display: inline-block;
+    background-color: currentColor;
+    mask-size: cover !important;
+  }
 }
 </style>

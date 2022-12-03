@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div>
     <div class="logo-container">
       <el-avatar
         :size="logoHeight"

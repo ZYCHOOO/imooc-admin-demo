@@ -111,7 +111,7 @@ const handleLogin = () => {
         loginLoading.value = false
         console.log('111')
       })
-      .catch((error) => {})
+      .catch((error) => { })
   })
 }
 </script>
@@ -156,8 +156,10 @@ $cursor: #fff;
 
       input {
         padding: 12px 5px 12px 15px;
+        height: 100%;
         background: transparent;
         border: none;
+        box-shadow: none;
         border-radius: 0;
         caret-color: $cursor;
         color: $light-gray;
