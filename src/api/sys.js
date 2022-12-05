@@ -5,9 +5,6 @@ import request from '@/utils/request'
  */
 export const login = (data) => {
   return request({
-    headers: {
-      icode: 'ef47b135ff54622eb40e434c33ad5d82'
-    },
     url: '/sys/login',
     method: 'POST',
     data

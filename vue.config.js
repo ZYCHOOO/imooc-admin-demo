@@ -7,10 +7,11 @@ module.exports = {
   // webpack devServer 提供了代理的能力，该代理可以把所有请求到当前服务器中的请求，转发代理到另一个服务器上
   devServer: {
     proxy: {
-      // 当地址中含有 /api 的时候，触发此代理
       '/api': {
-        target: 'https://api.imooc-admin.lgdsunday.club/',
-        changeOrigin: true
+        target: 'https://test.xxx.com', // 测试环境URL
+        // ws: true, // 是否启用websockets
+        changeOrigin: true, // 开启代理，在本地创建一个虚拟服务端
+        secure: false
       }
     }
   },

@@ -26,7 +26,9 @@
             :size="40"
             :src="$store.getters.userInfo.avatar"
           /> -->
-          <i class="el-icon-s-tools"></i>
+          <el-icon>
+            <Setting />
+          </el-icon>
         </div>
         <template #dropdown>
           <el-dropdown-menu class="user-dropdown">

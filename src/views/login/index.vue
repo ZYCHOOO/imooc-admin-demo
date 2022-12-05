@@ -102,16 +102,14 @@ const loginFormRef = ref(null)
 const store = useStore()
 const handleLogin = () => {
   loginFormRef.value.validate((valid) => {
-    console.log('111')
     if (!valid) return
     loginLoading.value = true
     store
       .dispatch('user/login', loginForm.value)
       .then((res) => {
         loginLoading.value = false
-        console.log('111')
       })
-      .catch((error) => { })
+      .catch((error) => {})
   })
 }
 </script>

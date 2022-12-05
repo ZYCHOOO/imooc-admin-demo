@@ -31,16 +31,14 @@ export default {
       return new Promise((resolve, reject) => {
         login({ username, password: md5(password) })
           .then((data) => {
-            this.commit('user/setToken', 123123)
-            // 跳转至首页
+            this.commit('user/setToken', data.token)
+            // // 跳转至首页
             router.push('/')
             // 保存登录时间
             setTimeStamp()
             resolve()
           })
           .catch((error) => {
-            this.commit('user/setToken', 123123)
-            router.push('/')
             reject()
           })
       })

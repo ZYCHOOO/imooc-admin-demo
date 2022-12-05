@@ -1,10 +1,11 @@
 import axios from 'axios'
 import store from '@/store'
-import ELMessage from 'element-plus'
+import { ElMessage } from 'element-plus'
 import { isTimeout } from './auth'
+import { getEnvValue } from './environment'
 
 const service = axios.create({
-  baseURL: process.env.VUE_APP_BASE_API,
+  baseURL: getEnvValue('VUE_APP_BASE_API'),
   timeout: 10000
 })
 
@@ -33,7 +34,7 @@ service.interceptors.response.use(
     if (success) {
       return data
     } else {
-      ELMessage.error(message)
+      ElMessage.error(message)
       return Promise.reject(new Error(message))
     }
   },
@@ -43,7 +44,7 @@ service.interceptors.response.use(
       // token 超时
       store.dispatch('user/login')
     }
-    ELMessage.error(error.message)
+    ElMessage.error(error.message)
     return Promise.reject(error)
   }
 )
