@@ -15,7 +15,9 @@ router.beforeEach(async (to, from, next) => {
     } else {
       // 判断用户信息是否存在，如果不存在，则获取用户信息
       if (!store.getters.hasUserInfo) {
-        await store.dispatch('user/getUserInfo')
+        await store.dispatch('user/getUserInfo', {
+          lang: store.getters.language
+        })
         // next(to.path)
       }
       next()

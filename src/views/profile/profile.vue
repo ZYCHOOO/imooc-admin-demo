@@ -1,44 +1,50 @@
 <template>
-  <div>
-    <el-pagination
-      :page-size="100"
-      layout="total, prev, pager, next"
-      :total="1000"
-    />
-
-    <el-button type="primary">Primary</el-button>
-    <el-button type="success">Success</el-button>
-    <el-button type="info">Info</el-button>
-    <el-button type="warning">Warning</el-button>
-    <el-button type="danger">Danger</el-button>
-
-    <div class="test-btn" :class="{ active: test }" @click="toggleBoolean">
-      test click alter Boolean:: {{ test }}
-    </div>
+  <div class="profile-container">
+    <el-row>
+      <el-col :span="6">
+        <project-card class="project-card" :features="featureData" />
+      </el-col>
+      <el-col :span="18">
+        <el-card>
+          <el-tabs v-model="activeName">
+            <el-tab-pane :label="$t('msg.profile.feature')" name="feature">
+              <function :features="featureData" />
+            </el-tab-pane>
+            <el-tab-pane :label="$t('msg.profile.chapter')" name="chapter">
+              <chapter />
+            </el-tab-pane>
+            <el-tab-pane :label="$t('msg.profile.author')" name="author">
+              <author />
+            </el-tab-pane>
+          </el-tabs>
+        </el-card>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
 <script setup>
-import { ref, watch } from 'vue'
+import { ref } from 'vue'
+import { useStore } from 'vuex'
 import { ElMessage } from 'element-plus'
+import Author from './components/Author'
+import Chapter from './components/Chapter'
+import Function from './components/Function'
+import ProjectCard from './components/ProjectCard'
 
-const test = ref(false)
+import { feature } from '@/api/user'
+import { watchSwitchLang } from '@/utils/i18n'
 
-const toggleBoolean = () => {
-  test.value = !test.value
-  ElMessage.success(test.value)
+const store = useStore()
+const featureData = ref([])
+const activeName = ref('feature')
+
+const getFeatureData = async () => {
+  featureData.value = await feature({ lang: store.getters.language })
 }
 
-watch(test, (val, newVal) => {
-  console.log('old val: ', val, 'new val: ', newVal)
-})
+getFeatureData()
+watchSwitchLang(getFeatureData)
 </script>
 
-<style lang="scss" scoped>
-.test-btn {
-  @include flex-center;
-  border: 1px solid black;
-  width: 280px;
-  height: 38px;
-}
-</style>
+<style lang="scss" scoped></style>

@@ -14,9 +14,10 @@ export const login = (data) => {
 /**
  * 获取用户信息
  */
-export const getUserInfo = () => {
+export const getUserInfo = (params) => {
   return request({
     url: '/sys/profile',
-    method: 'GET'
+    method: 'GET',
+    params
   })
 }

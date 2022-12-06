@@ -1,4 +1,5 @@
 import md5 from 'md5'
+import app from './app'
 import router from '@/router'
 import { TOKEN_KEY } from '@/utils/enums'
 import { login, getUserInfo } from '@/api/sys'
@@ -47,8 +48,8 @@ export default {
      * 获取用户信息
      * @param {*} context
      */
-    async getUserInfo (context) {
-      const res = await getUserInfo()
+    async getUserInfo (context, payload) {
+      const res = await getUserInfo({ lang: payload.lang })
       this.commit('user/setUserInfo', res)
       return res
     },
