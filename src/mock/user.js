@@ -444,7 +444,7 @@ export default [
       return {
         code: 200,
         success: true,
-        data: features[lang].data
+        data: features[lang]?.data
       }
     }
   },
@@ -457,7 +457,7 @@ export default [
       return {
         code: 200,
         success: true,
-        data: chapters[lang].data
+        data: chapters[lang]?.data
       }
     }
   }
