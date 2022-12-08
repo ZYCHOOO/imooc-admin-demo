@@ -25,7 +25,9 @@ const i18n = createI18n({
   legacy: false,
   // 全局注入 $t 函数
   globalInjection: true,
+  silentTranslationWarn: true,
   locale: getLanguage(),
+  fallbackLocale: 'zh',
   messages
 })
 

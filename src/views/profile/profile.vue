@@ -1,6 +1,6 @@
 <template>
   <div class="profile-container">
-    <el-row>
+    <el-row :gutter="20">
       <el-col :span="6">
         <project-card class="project-card" :features="featureData" />
       </el-col>

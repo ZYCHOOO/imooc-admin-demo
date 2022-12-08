@@ -5,7 +5,7 @@ const routes = [
     path: '/user',
     component: Layout,
     redirect: '/user/manage',
-    meta: { title: 'user', icon: 'personal' },
+    meta: { title: 'user', icon: 'user' },
     children: [
       // 用户管理
       {
