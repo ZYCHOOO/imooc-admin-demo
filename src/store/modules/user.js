@@ -10,7 +10,8 @@ export default {
   namespaced: true,
   state: () => ({
     token: getItem(TOKEN_KEY) || '',
-    userInfo: {}
+    userInfo: {},
+    permission: []
   }),
   mutations: {
     setToken (state, token) {

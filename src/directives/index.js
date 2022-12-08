@@ -1,10 +1,10 @@
 import demo from './demo'
-import click from './click'
+import interaction from './interaction'
 
 // 自定义指令
 const directives = {
   ...demo,
-  ...click
+  ...interaction
 }
 
 export const installDirectives = (app) => {
