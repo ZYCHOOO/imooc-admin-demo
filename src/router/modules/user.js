@@ -19,14 +19,14 @@ const routes = [
         path: '/user/role',
         name: 'userRole',
         component: () => import('@/views/userManage/roleList'),
-        meta: { title: 'userRole', icon: '' }
+        meta: { title: 'userRole', icon: 'user' }
       },
       // 权限列表
       {
         path: '/user/permission',
         name: 'UserPermission',
         component: () => import('@/views/userManage/permissionList'),
-        meta: { title: 'userPermission', icon: '' }
+        meta: { title: 'userPermission', icon: 'user' }
       },
       // 用户信息
       {

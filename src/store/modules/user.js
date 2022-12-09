@@ -11,7 +11,7 @@ export default {
   state: () => ({
     token: getItem(TOKEN_KEY) || '',
     userInfo: {},
-    permission: []
+    permission: ['add-user', 'del-user', 'alter-user']
   }),
   mutations: {
     setToken (state, token) {
