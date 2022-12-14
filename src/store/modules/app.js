@@ -1,4 +1,4 @@
-import { LANG_KEY, TAG_VIEW_KEY } from '@/utils/enums'
+import { LANG_KEY, TAG_VIEW_KEY } from '@/constant/enums'
 import { getItem, setItem } from '@/utils/storage'
 
 export default {

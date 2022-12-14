@@ -1,6 +1,6 @@
 import { getItem } from '@/utils/storage'
 import { generateColors } from '@/utils/theme'
-import { MAIN_COLOR_KEY } from '@/utils/enums'
+import { MAIN_COLOR_KEY } from '@/constant/enums'
 
 const getters = {
   token: (state) => state.user.token,

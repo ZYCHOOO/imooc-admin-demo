@@ -2,7 +2,7 @@ import axios from 'axios'
 import store from '@/store'
 import { ElMessage } from 'element-plus'
 import { isTimeout } from './auth'
-import { getEnvValue } from './environment'
+import { getEnvValue } from '@/constant/environment'
 
 const service = axios.create({
   baseURL: getEnvValue('VUE_APP_BASE_API'),

@@ -1,7 +1,7 @@
 import color from 'css-color-function'
 import axios from 'axios'
 import rgbHex from 'rgb-hex'
-import formula from './formula.json'
+import formula from '@/constant/formula.json'
 
 /**
  * 把生成的样式表写入到 style 中

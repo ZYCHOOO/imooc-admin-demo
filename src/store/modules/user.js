@@ -1,7 +1,7 @@
 import md5 from 'md5'
 import app from './app'
 import router from '@/router'
-import { TOKEN_KEY } from '@/utils/enums'
+import { TOKEN_KEY } from '@/constant/enums'
 import { login, getUserInfo } from '@/api/sys'
 import { getTimeStamp, setTimeStamp } from '@/utils/auth'
 import { getItem, setItem, removeAllItem } from '@/utils/storage'

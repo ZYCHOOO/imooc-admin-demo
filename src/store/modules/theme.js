@@ -1,6 +1,6 @@
 import { getItem, setItem } from '@/utils/storage'
 import variables from '@/styles/variables.scss'
-import { MAIN_COLOR_KEY, DEFAULT_COLOR_KEY } from '@/utils/enums'
+import { MAIN_COLOR_KEY, DEFAULT_COLOR_KEY } from '@/constant/enums'
 
 export default {
   namespaced: true,
