@@ -1,19 +1,16 @@
 <template>
-  <div>
-    <el-pagination
-      :small="small"
-      :background="background"
-      :total="pagination.total"
-      :layout="pagination.layout"
-      :page-size="pagination.pageSize"
-      :current-page="pagination.pageNum"
-      :page-sizes="pagination.pageSizes"
-      :hide-on-single-page="hideOnSinglePage"
-      :pager-count="pagination?.pagerCount || 7"
-      @size-change="handleSizeChange"
-      @current-change="handlePageChange"
-    />
-  </div>
+  <el-pagination
+    :small="small"
+    :background="background"
+    :total="pagination.total"
+    :layout="pagination.layout"
+    :page-size="pagination.pageSize"
+    :current-page="pagination.pageNum"
+    :page-sizes="pagination.pageSizes"
+    :pager-count="pagination?.pagerCount || 7"
+    @size-change="handleSizeChange"
+    @current-change="handleCurrentChange"
+  />
 </template>
 
 <script setup>
@@ -23,7 +20,7 @@ defineProps({
   small: { type: Boolean, default: false },
   background: { type: Boolean, default: true },
   pagination: { type: Object, required: true },
-  hideOnSinglePage: { type: Boolean, default: true }
+  hideOnSinglePage: { type: Boolean, default: false }
 })
 
 const emits = defineEmits(['size-change', 'limit-change'])

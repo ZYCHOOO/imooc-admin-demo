@@ -1,8 +1,12 @@
 <template>
   <div class="user-manage">
     <el-card class="user-manage-header">
-      <el-button type="primary">{{ $t('msg.excel.importExcel') }}</el-button>
-      <el-button type="success">{{ $t('msg.excel.exportExcel') }}</el-button>
+      <el-button type="primary" @click="handleImport">{{
+        $t('msg.excel.importExcel')
+      }}</el-button>
+      <el-button type="success" @click="handleExport">{{
+        $t('msg.excel.exportExcel')
+      }}</el-button>
     </el-card>
     <el-card class="user-manage-body">
       <list-table
@@ -34,11 +38,13 @@
 </template>
 
 <script setup>
+import { useRouter } from 'vue-router'
 import { ref, getCurrentInstance } from 'vue'
 import { getUserManageList } from '@/api/userManage'
 import { USER_MANAGE_COLUMNS } from '@/constant/tableColumns'
 import { listTableHook } from '@/hooks/listTableHook'
 
+const router = useRouter()
 const { proxy } = getCurrentInstance()
 const { tableData, tableLoading, tableColumns, paginationConfig, getData } =
   listTableHook()
@@ -65,6 +71,12 @@ const getUserManageData = async () => {
     tableLoading.value = false
   }
 }
+
+const handleImport = () => {
+  router.push({ name: 'UserImport' })
+}
+
+const handleExport = () => {}
 
 getData(1, 10, getUserManageData)
 </script>

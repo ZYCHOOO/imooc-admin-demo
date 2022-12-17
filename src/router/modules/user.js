@@ -38,7 +38,7 @@ const routes = [
       {
         path: '/user/import',
         name: 'UserImport',
-        component: () => import('@/views/userManage/roleList'),
+        component: () => import('@/views/userManage/userImport'),
         meta: { title: 'userImport' }
       }
     ]
