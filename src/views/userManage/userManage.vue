@@ -1,40 +1,45 @@
 <template>
   <div class="user-manage">
-    <list-table
-      show-index
-      :index-width="80"
-      :formatter="formatter"
-      :table-data="tableData"
-      :table-columns="tableColumns"
-      :table-loading="tableLoading"
-      :pagination-config="paginationConfig"
-    >
-      <template #avatar="{ row }">
-        <img :src="row.avatar" alt="" class="user-manage-avatar" />
-      </template>
-      <template #role="{ row }">
-        <el-tag v-for="item in row.role" :key="item.id">{{
-          item.title
-        }}</el-tag>
-      </template>
-      <template #operate="{ row }">
-        <el-button type="primary">查 看</el-button>
-        <el-button type="default">角 色</el-button>
-        <el-button type="danger">删 除</el-button>
-      </template>
-    </list-table>
+    <el-card class="user-manage-header">
+      <el-button type="primary">{{ $t('msg.excel.importExcel') }}</el-button>
+      <el-button type="success">{{ $t('msg.excel.exportExcel') }}</el-button>
+    </el-card>
+    <el-card class="user-manage-body">
+      <list-table
+        show-index
+        pagination-position="center"
+        :index-width="80"
+        :formatter="formatter"
+        :table-data="tableData"
+        :table-columns="tableColumns"
+        :table-loading="tableLoading"
+        :pagination-config="paginationConfig"
+      >
+        <template #avatar="{ row }">
+          <img :src="row.avatar" alt="" class="user-manage-avatar" />
+        </template>
+        <template #role="{ row }">
+          <el-tag v-for="item in row.role" :key="item.id">{{
+            item.title
+          }}</el-tag>
+        </template>
+        <template #operate="{ row }">
+          <el-button type="primary">查 看</el-button>
+          <el-button type="default">角 色</el-button>
+          <el-button type="danger">删 除</el-button>
+        </template>
+      </list-table>
+    </el-card>
   </div>
 </template>
 
 <script setup>
 import { ref, getCurrentInstance } from 'vue'
 import { getUserManageList } from '@/api/userManage'
-import ListTable from '@/components/ListTable/index'
 import { USER_MANAGE_COLUMNS } from '@/constant/tableColumns'
 import { listTableHook } from '@/hooks/listTableHook'
 
 const { proxy } = getCurrentInstance()
-
 const { tableData, tableLoading, tableColumns, paginationConfig, getData } =
   listTableHook()
 
@@ -43,7 +48,7 @@ tableColumns.value = USER_MANAGE_COLUMNS
 const formatter = (row, column, cellValue, index) => {
   const rowKey = column.property
   if (rowKey === 'openTime') {
-    return proxy.$dayjs(row[rowKey]).format('YYYY-MM-DD HH:mm')
+    return proxy.$filters.dateTimeFilter(row[rowKey])
   } else {
     return row[rowKey] || '--'
   }
@@ -66,10 +71,15 @@ getData(1, 10, getUserManageData)
 
 <style lang="scss" scoped>
 .user-manage {
+  @include flex-column;
   &-avatar {
     width: 60px;
     height: 60px;
     border-radius: 50%;
+  }
+  &-header {
+    @include flex-row;
+    justify-content: flex-end;
   }
 }
 </style>

@@ -10,7 +10,9 @@ import { initMockServer } from '@/mock/mock-server'
 import installElementPlus from './plugins/element'
 // 导入 svgIcon
 import installIcons from '@/icons'
-import { installDirectives } from '@/directives/index'
+import installDirectives from '@/directives/index'
+import installFilters from '@/filters/index'
+import installComponents from '@/components/index'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
 import '@/styles/index.scss'
@@ -24,6 +26,9 @@ const app = createApp(App)
 installElementPlus(app)
 installIcons(app)
 installDirectives(app)
+installFilters(app)
+installComponents(app)
+
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
   app.component(key, component)
 }
