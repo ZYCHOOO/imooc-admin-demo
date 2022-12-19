@@ -6,3 +6,15 @@ export const USER_MANAGE_COLUMNS = [
   { key: 'openTime', label: '开通时间' },
   { slot: 'operate', label: '操作', minWidth: 150 }
 ]
+
+export const ROLE_LIST_COLUMNS = [
+  { key: 'title', label: '名称' },
+  { key: 'desc', label: '描述' },
+  { slot: 'operate', label: '操作', minWidth: 120 }
+]
+
+export const PERMISSION_LIST_COLUMNS = [
+  { key: 'permissionName', label: '权限名称' },
+  { key: 'permissionMark', label: '权限标识' },
+  { key: 'permissionDesc', label: '权限描述' }
+]

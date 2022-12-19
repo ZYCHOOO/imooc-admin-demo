@@ -2,9 +2,11 @@ import Mock from 'mockjs'
 import { getEnvValue } from '@/constant/environment'
 import sys from './sys'
 import user from './user'
+import role from './role'
 import userManage from './userManage'
+import permission from './permission'
 
-const mocks = [...sys, ...user, ...userManage]
+const mocks = [...sys, ...user, ...userManage, ...role, ...permission]
 // for front mock
 // please use it cautiously, it will redefine XMLHttpRequest,
 // which will cause many of your third-party libraries to be invalidated(like progress event).
