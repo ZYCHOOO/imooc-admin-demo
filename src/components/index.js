@@ -1,8 +1,12 @@
 // 全局注册 components
-import ListTable from './ListTable/index'
+import ListTable from './Table/ListTable/index'
+import TreeTable from './Table/TreeTable/index'
+import Pagination from './Pagination/index'
 
 const components = {
-  ListTable
+  ListTable,
+  TreeTable,
+  Pagination
 }
 export default (app) => {
   for (const key in components) {

@@ -7,7 +7,7 @@
     <!-- 表格-数据展示 -->
     <div class="list-table-content">
       <el-table
-        ref="table"
+        ref="listTable"
         :border="border"
         :stripe="stripe"
         :data="tableData"
@@ -86,9 +86,8 @@
 <script setup>
 import { ref, computed, defineProps, defineEmits } from 'vue'
 import variables from '@/styles/variables.scss'
-import Pagination from '@/components/Pagination/index'
-import { tableConfigHook } from './tableConfigHook'
-import { tableOperationHook } from './tableOperationHook'
+import { tableConfigHook } from '../tableConfig'
+import { tableOperationHook } from '../tableOperation'
 
 const props = defineProps({
   tableLoading: { type: Boolean },
@@ -102,7 +101,7 @@ const props = defineProps({
   selectionWidth: { type: Number, default: 50 },
   renderHeader: { type: Function, default: null },
   showSelection: { type: Boolean, default: false },
-  searchParams: { type: Object, default: () => {} },
+  searchParams: { type: Object, default: () => { } },
   paginationPosition: {
     type: String,
     default: 'center',
@@ -125,6 +124,7 @@ const props = defineProps({
   }
 })
 
+const listTable = ref(null)
 const emits = defineEmits([
   'select',
   'select-all',
@@ -144,7 +144,7 @@ const {
   clearFilter,
   doLayout,
   onRowClick
-} = tableOperationHook(emits)
+} = tableOperationHook(emits, listTable)
 </script>
 
 <style lang="scss" scoped>

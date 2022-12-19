@@ -4,6 +4,10 @@ export const listTableHook = () => {
   const tableData = ref([])
   const tableColumns = ref([])
   const tableLoading = ref(false)
+  const treeProps = ref({
+    hasChildren: 'hasChildren',
+    children: 'children'
+  })
   const paginationConfig = ref({
     total: 0,
     pageNum: 1,
@@ -19,5 +23,12 @@ export const listTableHook = () => {
     cb()
   }
 
-  return { tableData, tableLoading, tableColumns, paginationConfig, getData }
+  return {
+    tableData,
+    tableLoading,
+    tableColumns,
+    treeProps,
+    paginationConfig,
+    getData
+  }
 }
