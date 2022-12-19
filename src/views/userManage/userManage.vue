@@ -29,22 +29,26 @@
         </template>
         <template #operate="{ row }">
           <el-button type="primary">查 看</el-button>
-          <el-button type="default">角 色</el-button>
+          <el-button type="default" @click="handleRole(row.id)">角 色</el-button>
           <el-button type="danger">删 除</el-button>
         </template>
       </list-table>
     </el-card>
   </div>
+  <roles-dialog v-model="rolesVisible" :user-id="currentUserId" />
 </template>
 
 <script setup>
 import { useRouter } from 'vue-router'
 import { ref, getCurrentInstance } from 'vue'
+import RolesDialog from './components/rolesDialog'
 import { getUserManageList } from '@/api/userManage'
-import { USER_MANAGE_COLUMNS } from '@/constant/tableColumns'
 import { listTableHook } from '@/hooks/listTableHook'
+import { USER_MANAGE_COLUMNS } from '@/constant/tableColumns'
 
 const router = useRouter()
+const currentUserId = ref()
+const rolesVisible = ref(false)
 const { proxy } = getCurrentInstance()
 const { tableData, tableLoading, tableColumns, paginationConfig, getData } =
   listTableHook()
@@ -76,7 +80,12 @@ const handleImport = () => {
   router.push({ name: 'UserImport' })
 }
 
-const handleExport = () => {}
+const handleExport = () => { }
+
+const handleRole = (id) => {
+  currentUserId.value = id
+  rolesVisible.value = true
+}
 
 getData(1, 10, getUserManageData)
 </script>

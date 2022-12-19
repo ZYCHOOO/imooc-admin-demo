@@ -1,3 +1,9 @@
+import { getQueryString } from '@/utils/index'
+
+const roles = {
+  '612710a9ec87aa543c9c3420': '超级管理员',
+  '612710a9ec87aa543c9c3421': '管理员'
+}
 export default [
   {
     url: '/user-manage/list',
@@ -31,6 +37,19 @@ export default [
             }
           ]
         }
+      }
+    }
+  },
+  {
+    url: '/user-manage/role',
+    type: 'get',
+    response: (config) => {
+      console.log('config', config)
+      const id = getQueryString(config.query, 'id')
+      return {
+        code: 200,
+        success: true,
+        data: roles[id]
       }
     }
   }

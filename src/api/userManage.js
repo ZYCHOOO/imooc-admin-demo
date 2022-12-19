@@ -10,3 +10,11 @@ export const getUserManageList = (params) => {
     params
   })
 }
+
+export const getCurrentRole = (params) => {
+  return request({
+    url: '/user-manage/role',
+    method: 'GET',
+    params
+  })
+}

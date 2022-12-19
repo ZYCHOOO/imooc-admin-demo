@@ -1,8 +1,8 @@
-import reqeust from '@/utils/request'
+import request from '@/utils/request'
 
 // 获取角色列表
 export const getRoles = (params) => {
-  return reqeust({
+  return request({
     url: '/role/list',
     method: 'GET',
     params
